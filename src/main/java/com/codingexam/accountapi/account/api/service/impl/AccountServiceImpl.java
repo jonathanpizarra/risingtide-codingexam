@@ -28,9 +28,6 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public long createAccount(AccountRequest data) {
-        System.out.println(data.getCustomerName());
-        System.out.println(data.getAccountType());
-        System.out.println(data.getCustomerEmail());
         CustomerAccount customerAccount = mapToEntity(data);
         CustomerAccount newCustomerAccount = accountRepository.save(customerAccount);
 
@@ -53,7 +50,7 @@ public class AccountServiceImpl implements AccountService {
         customerAccount.setCustomerMobile(data.getCustomerMobile());
         customerAccount.setCustomerEmail(data.getCustomerEmail());
         customerAccount.setAddress1(data.getAddress1());
-        if(!data.getAddress2().trim().isEmpty()){
+        if(data.getAddress2() != null && !data.getAddress2().trim().isEmpty()){
             customerAccount.setAddress2(data.getAddress2());
         }
         customerAccount.setAccountType(AccountType.valueOf(data.getAccountType()));
