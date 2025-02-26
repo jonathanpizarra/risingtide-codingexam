@@ -13,7 +13,7 @@ import javax.persistence.*;
 public class CustomerAccount {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "customer_name", length = 50)

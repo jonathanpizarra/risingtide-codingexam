@@ -30,9 +30,9 @@ public class AccountController {
     }
 
     @PostMapping("/account")
-    @Operation(summary = "Create a new user")
+    @Operation(summary = "Create new customer account")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "201", description = "User created"),
+            @ApiResponse(responseCode = "201", description = "Account created"),
             @ApiResponse(responseCode = "400", description = "Bad request")
     })
     public ResponseEntity<AccountResponse> createAccount(
@@ -43,6 +43,11 @@ public class AccountController {
     }
 
     @GetMapping("/{customerNumber}")
+    @Operation(summary = "Find customer account")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "302", description = "Account found"),
+            @ApiResponse(responseCode = "401", description = "Not Found")
+    })
     public ResponseEntity<CustomerRes> findAccount(
             @Pattern(regexp = "\\d+", message = "Customer number must be numeric") @PathVariable("customerNumber") @Parameter(description = "ID of customer") Long customerNumber){
         CustomerRes customer = accountService.findAccount(customerNumber);

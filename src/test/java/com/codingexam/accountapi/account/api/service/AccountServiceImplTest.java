@@ -5,7 +5,6 @@ import com.codingexam.accountapi.account.api.exception.CustomerNotFoundException
 import com.codingexam.accountapi.account.api.model.CustomerAccount;
 import com.codingexam.accountapi.account.api.repository.AccountRepository;
 import com.codingexam.accountapi.account.api.req.AccountRequest;
-import com.codingexam.accountapi.account.api.res.CustomerRes;
 import com.codingexam.accountapi.account.api.res.SuccessCustomerRes;
 import com.codingexam.accountapi.account.api.service.impl.AccountServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
@@ -13,7 +12,6 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.Optional;
 
@@ -21,7 +19,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
-//@SpringBootTest
 public class AccountServiceImplTest {
 
     @Mock

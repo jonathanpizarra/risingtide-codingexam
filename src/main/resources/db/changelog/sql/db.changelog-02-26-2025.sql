@@ -1,5 +1,5 @@
 CREATE TABLE customer_account (
-    id SERIAL PRIMARY KEY,
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
     customer_name VARCHAR(50) NOT NULL,
     customer_mobile VARCHAR(20) NOT NULL,
     customer_email VARCHAR(50) NOT NULL,
