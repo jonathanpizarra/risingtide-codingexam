@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.codingexam.accountapi</groupId>
-	<artifactId>account-api</artifactId>
+	<artifactId>customerAccount-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>account-api</name>
+	<name>customerAccount-api</name>
 	<description>Coding Exam</description>
 	<url/>
 	<licenses>

@@ -1,4 +1,4 @@
-CREATE TABLE account (
+CREATE TABLE customer_account (
     id SERIAL PRIMARY KEY,
     customer_name VARCHAR(50) NOT NULL,
     customer_mobile VARCHAR(20) NOT NULL,

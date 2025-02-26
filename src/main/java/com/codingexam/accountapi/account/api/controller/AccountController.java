@@ -2,6 +2,7 @@ package com.codingexam.accountapi.account.api.controller;
 
 import com.codingexam.accountapi.account.api.req.AccountRequest;
 import com.codingexam.accountapi.account.api.res.AccountResponse;
+import com.codingexam.accountapi.account.api.res.CustomerRes;
 import com.codingexam.accountapi.account.api.res.SuccessAccountResponse;
 import com.codingexam.accountapi.account.api.service.AccountService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Pattern;
 
 @Controller
 @RequestMapping("/api/v1")
@@ -33,15 +35,20 @@ public class AccountController {
             @ApiResponse(responseCode = "201", description = "User created"),
             @ApiResponse(responseCode = "400", description = "Bad request")
     })
-    public ResponseEntity<AccountResponse> createAccount(@Valid @ModelAttribute @Parameter(description = "Account data") AccountRequest accountRequest){
+    public ResponseEntity<AccountResponse> createAccount(
+            @Valid @ModelAttribute @Parameter(description = "Account data") AccountRequest accountRequest){
             long customerNumber = accountService.createAccount(accountRequest);
             AccountResponse accountResponse = new SuccessAccountResponse(customerNumber, HttpStatus.CREATED.value(), "Customer account created");
             return new ResponseEntity<>(accountResponse, HttpStatus.CREATED);
     }
 
-    @GetMapping("/{userId}")
-    public ResponseEntity<String> findAccount(@PathVariable @Parameter(description = "ID of user") String userId){
-        return new ResponseEntity<>(HttpStatus.OK);
+    @GetMapping("/{customerNumber}")
+    public ResponseEntity<CustomerRes> findAccount(
+            @Pattern(regexp = "\\d+", message = "Customer number must be numeric") @PathVariable("customerNumber") @Parameter(description = "ID of customer") Long customerNumber){
+        CustomerRes customer = accountService.findAccount(customerNumber);
+        customer.setTransactionStatusCode(HttpStatus.FOUND.value());
+        customer.setTransactionStatusDescription("Customer Account found");
+        return new ResponseEntity<>(customer, HttpStatus.FOUND);
     }
 
 
