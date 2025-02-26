@@ -4,7 +4,6 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.http.HttpStatus;
 
 import javax.validation.constraints.Null;
 
@@ -15,7 +14,7 @@ public class SuccessAccountResponse implements AccountResponse{
 
     @Schema(description = "Customer number")
     @Null
-    int customerNumber;
+    long customerNumber;
 
     @Schema(description = "Status code")
     int transactionStatusCode;

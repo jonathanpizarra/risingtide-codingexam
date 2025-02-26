@@ -4,7 +4,7 @@ import com.codingexam.accountapi.account.api.req.AccountRequest;
 
 public interface AccountService {
 
-     int createAccount(AccountRequest data);
+     long createAccount(AccountRequest data);
 
      String findAccount(String data);
 }
